@@ -109,47 +109,26 @@
     <div class="hero-section">
         <div class="hero-text">
             <h1>ECOMMERCE KERAJINAN LOKAL INDONESIA</h1>
-            <a href="#" class="hero-button">Login/Sign up</a>
+            <a href="{{ route('auth.page') ?? '#' }}" class="hero-button">Login/Sign up</a>
         </div>
         <div class="hero-slider">
-    <img src="https://i.pinimg.com/736x/1b/53/2d/1b532d280c349bdf202b34d912ff937f.jpg" alt="Keranjang Kecil" class="slider-image">
-    <img src="https://i.pinimg.com/1200x/48/3e/6e/483e6ee19d96076c8a808b3803ee384c.jpg" alt="Keranjang Utama" class="slider-image main">
-    <img src="https://i.pinimg.com/736x/74/7e/6b/747e6baf8cc3dc9ca4fdf775d2fcc3ab.jpg" alt="Tas Anyaman" class="slider-image">
-    <img src="https://i.pinimg.com/1200x/80/3b/c9/803bc987955839da9c878f14ba93cca7.jpg" alt="Lampu meja" class="slider-image">
-    <button class="slider-control" aria-label="Previous">◀</button>
-</div>
-
-<div class="product-grid">
-    <div class="product-list">
-        @if (!empty($dbProducts) && $dbProducts->count())
-
-            {{-- Loop untuk setiap produk yang diambil dari database --}}
-            @foreach ($dbProducts as $product)
-                <div class="product-card">
-
-                    {{-- Sumber Gambar menggunakan kolom 'Gambar' --}}
-                    <img src="{{ $product->Gambar }}" alt="{{ $product->Nama_Produk }}" class="product-image">
-
-                    <div class="product-info">
-                        {{-- Nama Produk menggunakan kolom 'Nama_Produk' --}}
-                        <h3 class="product-name">{{ $product->Nama_Produk }}</h3>
-
-                        {{-- Harga Produk menggunakan kolom 'Harga' (difomat ke Rupiah) --}}
-                        <p class="product-price">
-                            Rp {{ number_format($product->Harga, 0, ',', '.') }}
-                        </p>
-
-                        <button class="buy-button">Lihat Produk</button>
-                    </div>
-                </div>
-            @endforeach
-
-        @else
-            {{-- Pesan ditampilkan jika tidak ada data --}}
-            <p>Maaf, tidak ada produk yang ditemukan saat ini.</p>
-        @endif
+            <img src="https://via.placeholder.com/150x200/F5DEB3/8B4513?text=Anyaman" alt="Keranjang Kecil" class="slider-image">
+            <img src="https://via.placeholder.com/250x300/B8860B/FFFFFF?text=Keranjang+Besar" alt="Keranjang Utama" class="slider-image main">
+            <button class="slider-control" aria-label="Previous"></button>
+        </div>
     </div>
-</div>
+
+    <div class="product-grid">
+        <div class="product-list">
+            @php
+                // Data produk (simulasi)
+                $products = [
+                    ['name' => 'Storage Basket', 'price' => 'Rp 120.000', 'image' => 'https://via.placeholder.com/180/EEDD82/333?text=Basket'],
+                    ['name' => 'Craft Lamp', 'price' => 'Rp 100.000', 'image' => 'https://via.placeholder.com/180/CD853F/333?text=Lamp'],
+                    ['name' => 'Vas Rotan', 'price' => 'Rp 100.000', 'image' => 'https://via.placeholder.com/180/F4A460/333?text=Vase'],
+                    ['name' => 'Container Storage', 'price' => 'Rp 60.000', 'image' => 'https://via.placeholder.com/180/D2B48C/333?text=Storage'],
+                    ['name' => 'Tas Rotan', 'price' => 'Rp 50.000', 'image' => 'https://via.placeholder.com/180/8B4513/FFF?text=Bag'],
+                ];
             @endphp
 
             @foreach ($products as $product)
